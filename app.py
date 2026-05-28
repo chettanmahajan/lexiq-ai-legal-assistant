@@ -2,6 +2,7 @@ import os
 import re
 import uuid
 from html import escape
+from pathlib import Path
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -44,6 +45,11 @@ def load_embeddings() -> HuggingFaceEmbeddings:
 
 
 def load_vector_store(embeddings: HuggingFaceEmbeddings) -> Chroma:
+    if not Path(VECTOR_STORE_DIR).exists():
+        raise RuntimeError(
+            "Vector database not found. Run `python ingest.py` once before starting the app."
+        )
+
     return Chroma(
         persist_directory=VECTOR_STORE_DIR,
         embedding_function=embeddings,
