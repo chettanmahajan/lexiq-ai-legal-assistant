@@ -1,0 +1,6 @@
+[server]
+emailEnabled = false
+headless = true
+
+[browser]
+serverAddress = "localhost"

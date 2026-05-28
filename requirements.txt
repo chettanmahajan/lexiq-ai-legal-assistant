@@ -1,0 +1,22 @@
+# Web UI
+streamlit==1.56.0
+python-dotenv==1.2.2
+
+# LLM (Groq)
+groq==0.37.1
+
+# RAG / LangChain
+langchain-core==1.3.3
+langchain-community==0.4.1
+langchain-chroma==1.1.0
+langchain-huggingface==1.2.2
+langchain-text-splitters==1.1.2
+
+# Vector store
+chromadb==1.5.9
+
+# Embeddings (pulls torch/transformers/tokenizers)
+sentence-transformers==5.4.1
+
+# PDF ingestion (used by ingest.py)
+pypdf==6.11.0
