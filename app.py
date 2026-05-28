@@ -109,7 +109,10 @@ with st.spinner("Loading retrieval pipeline..."):
         st.error(f"Unable to load the application: {exc}")
         st.stop()
 
-st.markdown('<p class="status-line">Corpus loaded. Ask a question from the available Indian legal documents.</p>', unsafe_allow_html=True)
+st.markdown(
+    '<p class="status-line">Corpus loaded. Ask a question from the available Indian legal documents.</p>',
+    unsafe_allow_html=True,
+)
 
 question = st.text_input(
     "Legal question",
@@ -119,12 +122,21 @@ question = st.text_input(
 if question:
     with st.spinner("Searching the corpus and drafting an answer..."):
         try:
-            result, _history = assistant.conversational(question, st.session_state.thread_id)
+            result, _history = assistant.conversational(
+                question, st.session_state.thread_id
+            )
             safe_question = escape(question)
             safe_result = escape(clean_result(result))
-            st.markdown(f'<div class="question-box"><strong>Question:</strong> {safe_question}</div>', unsafe_allow_html=True)
-            st.markdown(f'<div class="answer-box">{safe_result}</div>', unsafe_allow_html=True)
+            st.markdown(
+                f'<div class="question-box"><strong>Question:</strong> {safe_question}</div>',
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f'<div class="answer-box">{safe_result}</div>', unsafe_allow_html=True
+            )
         except Exception as exc:
             st.error(f"Unable to answer the question: {exc}")
 
-st.caption("LexIQ provides legal information for study and research. It does not provide legal advice.")
+st.caption(
+    "LexIQ provides legal information for study and research. It does not provide legal advice."
+)

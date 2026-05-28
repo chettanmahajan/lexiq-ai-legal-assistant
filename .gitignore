@@ -1,6 +1,18 @@
 # Python
 __pycache__/
 *.pyc
+*.egg-info/
+build/
+dist/
+
+# Test / tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Virtual environment
 venv/

@@ -62,7 +62,6 @@ def store_embeddings(chunks, embeddings):
         embedding_function=embeddings,
     )
     vector_store.add_documents(chunks)
-    vector_store.persist()
     logger.info("Stored embeddings in %s", VECTOR_STORE_DIR)
 
 
